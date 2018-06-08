@@ -39,8 +39,32 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="barang_merk.php"><i class="fa fa-dot-circle-o"></i>Merk</a></li>
-            <li><a href="barang_kategori.php"><i class="fa fa-dot-circle-o"></i>Kategori</a></li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-dot-circle-o"></i>Merk
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                    <a href="merk.php"><i class="fa fa-circle-o"></i>Daftar Merk</a>
+                    </li>
+                    <li>
+                    <a href="merk_tambah.php"><i class="fa fa-circle-o"></i>Tambah Merk</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+              <a href="#"><i class="fa fa-dot-circle-o"></i>Kategori<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+                  <ul class="treeview-menu">
+                    <li>
+                      <a href="kategori.php"><i class="fa fa-circle-o"></i>Daftar Kategori</a>
+                    </li>
+                    <li>
+                      <a href="kategori_tambah.php"><i class="fa fa-circle-o"></i>Tambah Kategori</a>
+                    </li>
+                  </ul>            
+            </li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-dot-circle-o"></i>Barang
                     <span class="pull-right-container">
@@ -49,7 +73,7 @@
                 </a>
               <ul class="treeview-menu">
                 <li>
-                <a href="barang_master.php"><i class="fa fa-circle-o"></i>Kelola Barang</a>
+                <a href="barang_master.php"><i class="fa fa-circle-o"></i>Daftar Barang</a>
                 </li>
                 <li>
                 <a href="barang_tambah.php"><i class="fa fa-circle-o"></i>Tambah Barang</a>
