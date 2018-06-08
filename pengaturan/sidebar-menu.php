@@ -27,13 +27,13 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="dashboard.php">
-            <i class="fa fa-calendar"></i> <span>Dashboard</span>
+            <i class="fa fa-calendar"></i><span>Dashboard</span>
           </a>
         </li>
         <li class="treeview active">
           <a href="#">
             <i class="fa fa-dashboard"></i> 
-            <span>Master</span>
+            <span>Master Data</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -91,8 +91,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php //echo $barang_masuk; ?>"><a href="#"><i class="fa fa-cart-plus"></i> Barang Masuk</a></li>
-            <li class="<?php //echo $barang_keluar; ?>"><a href="#"><i class="fa fa-cart-arrow-down"></i> Barang Keluar</a></li>
+            <li class="<?php //echo $barang_masuk; ?>"><a href="transaksi_brg_masuk.php"><i class="fa fa-cart-plus"></i> Barang Masuk</a></li>
+            <li class="<?php //echo $barang_keluar; ?>"><a href="transaksi_brg_keluar.php"><i class="fa fa-cart-arrow-down"></i> Barang Keluar</a></li>
           </ul>
         </li>
       </ul>

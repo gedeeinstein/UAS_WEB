@@ -100,7 +100,7 @@
         <section>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var manageTable;
 
 $(document).ready(function() {
@@ -287,5 +287,5 @@ function removeFunc(id)
 }
 
 
-</script>
+</script> -->
 <?php include "pengaturan/footer.php";?>
