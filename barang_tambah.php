@@ -37,12 +37,12 @@
                   <label for="sku">SKU</label>
                   <input type="text" class="form-control" id="sku" name="sku" placeholder="Enter sku" autocomplete="on" />
                 </div>
-
+				<!--
                 <div class="form-group">
                   <label for="price">Harga</label>
                   <input type="text" class="form-control" id="price" name="price" placeholder="harga" autocomplete="on" />
                 </div>
-
+				-->
                 <div class="form-group">
                   <label for="qty">Qty</label>
                   <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty" autocomplete="on" />

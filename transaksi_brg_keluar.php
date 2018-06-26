@@ -18,8 +18,17 @@
             <a href="tr_brg_keluar_tambah.php"><button class="btn btn-primary" data-toggle="modal">Tambah Barang Keluar</button></a>
             <br>
             <br>
+        <div class="box">    
+            <div class="box-header">
+                <h3 class="box-title">List Barang Keluar</h3>
+            </div>
+            <div class="box-body">
+               <!-- KONTEN DISINI-->
+            
 
-
+            </div>
+        </div>          
+    </section>      
 </div>
 
 <?php include "pengaturan/footer.php";?>

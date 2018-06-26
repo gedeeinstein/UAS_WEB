@@ -30,7 +30,7 @@
                 <th>Gambar</th>
                 <th>SKU</th>
                 <th>Nama Produk</th>
-                <th>Harga</th>
+                <!--<th>Harga</th>-->
                 <th>Qty</th>
                 <th>Gudang</th>
                 <th>Availability</th>
@@ -44,7 +44,7 @@
                       <td><img src="assets/5b037b484a303.jpg" alt="GENERAL MEAT SLICER GSE 112-50" class="img-circle" width="50" height="50"></td>
                         <td>GENSLIGSE112-50</td>
                         <td>GENERAL MEAT SLICER GSE 112-50</td>
-                        <td>12000000</td>
+                        <!--<td>12000000</td>-->
                         <td>495 </td>
                         <td>PT Dapur Inspirasi Nusantara</td>
                         <td><span class="label label-success">Active</span></td>
@@ -54,7 +54,8 @@
                         <td><img src="assets/5b037982e29b6.jpg" alt="GENERAL MEAT GRINDER GSM 50-50" class="img-circle" width="50" height="50"></td>
                         <td>GENGSM50-50</td>
                         <td>GENERAL MEAT GRINDER GSM 50-50</td>
-                        <td>5000000</td><td>95 </td>
+                        <!--<td>5000000</td>-->
+						<td>95 </td>
                         <td>PT Dapur Inspirasi Nusantara</td>
                         <td><span class="label label-success">Active</span></td>
                         <td><a href="#" class="btn btn-default"><i class="fa fa-pencil"></i></a> <button type="button" class="btn btn-default" onclick="removeFunc(2)" data-toggle="modal" data-target="#removeModal"><i class="fa fa-trash"></i></button></td>
