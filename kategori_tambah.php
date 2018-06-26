@@ -47,8 +47,8 @@
                  <div class="form-group">
                   <label for="status">Status</label>
                   <select class="form-control" id="availability" name="status">
-                    <option value="1">Aktif</option>
-                    <option value="2">Tidak Aktif</option>
+                    <option value="active">Aktif</option>
+                    <option value="not-active">Tidak Aktif</option>
                   </select>
                 </div>
 
