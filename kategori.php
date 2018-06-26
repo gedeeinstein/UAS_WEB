@@ -57,7 +57,7 @@
               <tr role="row" class="odd">
                 <?php 
 
-                 $query = "SELECT * FROM kategori"; // Query untuk menampilkan semua data kategori
+                 $query = "SELECT * FROM kategori /* where status ='active'*/"; // Query untuk menampilkan semua data kategori
                  $sql = mysqli_query($koneksi, $query);
 
                 while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
@@ -65,8 +65,8 @@
                     echo "<td class='sorting_1'>".$data['nm_kategori']."</td>";
                     echo "<td class=''><span class='label label-success'>".$data['status']."</td>";
                     echo "<td class=''>
-                    <a type='button' class='btn btn-default' href='form_ubah.php?id_kategori=".$data['id_kategori']."'><i class='fa fa-pencil'></i></a> 
-                    <a type='button' class='btn btn-default' href='proses_hapus.php?id_kategori=".$data['id_kategori']."'><i class='fa fa-trash'></i></a></td>";
+                    <a type='button' class='btn btn-default' href='kategori_ubah.php?id_kategori=".$data['id_kategori']."'><i class='fa fa-pencil'></i></a> 
+                    <a type='button' class='btn btn-default' href='proses/kategori_hapus.php?id_kategori=".$data['id_kategori']."'><i class='fa fa-trash'></i></a></td>";
                     echo "</tr>";
                   }
                   mysqli_close($koneksi);
@@ -114,7 +114,7 @@
   </div>
   </section>
 </div>
-
+<!-- 
 <script>
     $(document).ready(function() {
 	   $('#example').DataTable( {
@@ -123,5 +123,5 @@
 	        "ajax": "load-data.php",
 	    } );
 	} );
-	</script>
+	</script> -->
 <?php include "pengaturan/footer.php";?>

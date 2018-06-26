@@ -15,14 +15,11 @@
         <section class="content">
         <div id="messages"></div>
          <?php 
-          $kode_total = "SELECT max(id_kategori) as maxKode from kategori"; // mencari kode barang dengan nilai paling besar
-          $eksekusi1 = mysqli_query($koneksi,$kode_total);  // kueri eksekusi di php
-          $data = mysqli_fetch_array($eksekusi1);
-          $id_kat = $data['maxKode'];
-          $id_urut = (int) substr($id_kat, 3, 3);
-          $id_urut++;
-          $char = "KTG";
-          $id_kat = $char . sprintf("%03s", $id_urut);
+          
+          $id = $_GET['id_kategori'];
+          $query = "SELECT * FROM kategori WHERE id_kategori= '".$id."'";
+          $sql = mysqli_query($koneksi, $query);
+          $data = mysqli_fetch_array($sql);
           mysqli_close($koneksi);
           ?> 
             
@@ -31,17 +28,17 @@
                 <h3 class="box-title">Form Kategori Barang</h3>
             </div>
             <!-- FORM TAMBAH DATA BARANG -->
-            <form role="form" action="proses/kategori_simpan.php" method="post" enctype="multipart/form-data">
+            <form role="form" action="proses/kategori_ubah.php?id_kategori=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="id_kategori">ID Kategori</label>
-                  <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="id Kategori" autocomplete="on" value="<?php echo $id_kat; ?>" readonly/> 
+                  <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="id Kategori" autocomplete="on" value="<?php echo $id ?>" readonly/> 
                   <!-- Menggunakan Kode Otomatis Kategori -->
                 </div>
 
                 <div class="form-group">
                   <label for="nama_kategori">Nama Kategori</label>
-                  <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" autocomplete="on" />
+                  <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Nama Kategori" value="<?php echo $data['nm_kategori']; ?>" autocomplete="on" />
                 </div>
 
                  <div class="form-group">
