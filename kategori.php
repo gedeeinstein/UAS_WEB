@@ -12,7 +12,7 @@
         <section class="content">
             <?php //include "pengaturan/content-section.php" ?> 
             <div id="messages"></div>
-            <a href="barang_kategori_tambah.php"><button class="btn btn-primary" data-toggle="modal">Add Category</button></a>
+            <a href="kategori_tambah.php"><button class="btn btn-primary" data-toggle="modal">Add Category</button></a>
             <br><br>
 <div class="box">
   <div class="box-header">
@@ -69,6 +69,7 @@
                     <a type='button' class='btn btn-default' href='proses_hapus.php?id_kategori=".$data['id_kategori']."'><i class='fa fa-trash'></i></a></td>";
                     echo "</tr>";
                   }
+                  mysqli_close($koneksi);
                 ?>
 
                 <?php

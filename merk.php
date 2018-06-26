@@ -12,7 +12,7 @@
         <section class="content">
             <?php //include "pengaturan/content-section.php" ?> 
             <div id="messages"></div>
-            <a href="barang_merk_tambah.php"><button class="btn btn-primary" data-toggle="modal">Add Merk</button></a>
+            <a href="merk_tambah.php"><button class="btn btn-primary" data-toggle="modal">Add Merk</button></a>
             <br> <br>
         <!-- Memulai Isi L\Konten Merk -->
         <div class="box">

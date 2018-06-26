@@ -6,6 +6,7 @@
     require "../pengaturan/header.php";
     require "../pengaturan/header-menu.php";
     require "../pengaturan/sidebar-menu.php";
+   
 ?>
 <div class="content-wrapper">
     <?php include "../pengaturan/content-header.php" ?> 
