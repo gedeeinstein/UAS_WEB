@@ -6,22 +6,37 @@
     include "pengaturan/header.php";
     include "pengaturan/header-menu.php";
     include "pengaturan/sidebar-menu.php";
+
+  
+
 ?>
 <div class="content-wrapper">
     <?php include "pengaturan/content-header.php" ?> 
         <section class="content">
-            <?php //include "pengaturan/content-section.php" ?> 
+        <div id="messages"></div>
+         <?php 
+          $kode_total = "SELECT max(id_kategori) as maxKode from kategori"; // mencari kode barang dengan nilai paling besar
+          $eksekusi1 = mysqli_query($koneksi,$kode_total);  // kueri eksekusi di php
+          $data = mysqli_fetch_array($eksekusi1);
+          $id_kat = $data['maxKode'];
+          $id_urut = (int) substr($id_kat, 3, 3);
+          $id_urut++;
+          $char = "KG";
+          $id_kat = $char . sprintf("%03s", $id_urut);
+          mysqli_close($koneksi);
+          ?> 
             
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Form Kategori Barang</h3>
             </div>
             <!-- FORM TAMBAH DATA BARANG -->
-            <form role="form" action="" method="post" enctype="multipart/form-data">
+            <form role="form" action="kategori_simpan.php" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="id_kategori">ID Kategori</label>
-                  <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="id Kategori" autocomplete="on"/>
+                  <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="id Kategori" autocomplete="on" value="<?php echo $id_kat; ?>" readonly/> 
+                  <!-- Menggunakan Kode Otomatis Kategori -->
                 </div>
 
                 <div class="form-group">
@@ -31,7 +46,7 @@
 
                  <div class="form-group">
                   <label for="status">Status</label>
-                  <select class="form-control" id="availability" name="availability">
+                  <select class="form-control" id="availability" name="status">
                     <option value="1">Aktif</option>
                     <option value="2">Tidak Aktif</option>
                   </select>

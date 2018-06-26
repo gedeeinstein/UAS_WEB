@@ -8,7 +8,7 @@ else{
 	echo "Koneksi Berhasil";	
 }
 
-$sql = "create database db_kampus2";
+$sql = "create database db_kampus";
 
 if(mysqli_query($cnn, $sql)){
 	echo "Database Berhasil dibuat";
