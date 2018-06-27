@@ -14,7 +14,7 @@
             
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Form Edit Barang</h3>
+                <h3 class="box-title">Form Tambah Barang</h3>
             </div>
             <!-- FORM TAMBAH DATA BARANG -->
             <form role="form" action="" method="post" enctype="multipart/form-data">
