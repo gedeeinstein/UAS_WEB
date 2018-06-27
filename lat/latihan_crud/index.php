@@ -20,7 +20,7 @@
   include "koneksi.php";
   
   $query = "SELECT * FROM siswa"; // Query untuk menampilkan semua data siswa
-  $sql = mysqli_query($koneksi, $query); // Eksekusi/Jalankan query dari variabel $query
+  $sql = mysqli_query($connect, $query); // Eksekusi/Jalankan query dari variabel $query
   
   while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
     echo "<tr>";

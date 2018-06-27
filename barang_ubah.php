@@ -37,12 +37,7 @@
                   <label for="sku">SKU</label>
                   <input type="text" class="form-control" id="sku" name="sku" placeholder="Enter sku" autocomplete="on" />
                 </div>
-				<!--
-                <div class="form-group">
-                  <label for="price">Harga</label>
-                  <input type="text" class="form-control" id="price" name="price" placeholder="harga" autocomplete="on" />
-                </div>
-				-->
+
                 <div class="form-group">
                   <label for="qty">Qty</label>
                   <input type="text" class="form-control" id="qty" name="qty" placeholder="Enter Qty" autocomplete="on" />
@@ -54,27 +49,13 @@
                 <script>CKEDITOR.replace('description');</script>
                 </div>
 
-                <!-- <?php //if($attributes): ?>
-                  <?php //foreach ($attributes as $k => $v): ?>
-                  <label for="description">Tag Gambar</label>
-                    <div class="form-group">
-                      <label for="groups"><?php //echo $v['attribute_data']['name'] ?></label>
-                      <select class="form-control select_group" id="attributes_value_id" name="attributes_value_id[]" multiple="multiple">
-                        <?php //foreach ($v['attribute_value'] as $k2 => $v2): ?>
-                          <option value="<?php //echo $v2['id'] ?>"><?php //echo $v2['value'] ?></option>
-                        <?php //endforeach ?>
-                      </select>
-                    </div>    
-                  <?php //endforeach ?>
-                <?php //endif; ?> -->
-
                 <div class="form-group">
                   <label for="brands">Merek</label>
-                  <select class="form-control select_group" id="brands" name="brands[]"> <!--multiple="multiple" -->
-                    <?php //foreach ($brands as $k => $v): ?>
-                        <option value="1">Suneast</option>
+                  <select class="form-control select_group" id="brands" name="brands[]"> 
+                        <!-- <option value="1">Suneast</option>
                         <option value="2">Atmcool</option>
-                        <option value="3">Unox</option>
+                        <option value="3">Unox</option> -->
+
                         <option value="<?php //echo $v['id'] ?>"><?php //echo $v['name'] ?></option>
                     <?php //endforeach ?>
                   </select>
