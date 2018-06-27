@@ -17,7 +17,7 @@
                 <h3 class="box-title">Form Edit Barang</h3>
             </div>
             <!-- FORM TAMBAH DATA BARANG -->
-            <form role="form" action="" method="post" enctype="multipart/form-data">
+            <form role="form" action="proses/barang_ubah.php" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="product_image">Image</label>

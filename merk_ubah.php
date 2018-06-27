@@ -7,39 +7,35 @@
     include "pengaturan/header-menu.php";
     include "pengaturan/sidebar-menu.php";
 ?>
-<?php 
-          $kode_total = "SELECT max(id_merk) as maxKode from merk"; // mencari kode barang dengan nilai paling besar
-          $eksekusi1 = mysqli_query($koneksi,$kode_total);  // kueri eksekusi di php
-          $data = mysqli_fetch_array($eksekusi1);
-          $id_merk = $data['maxKode'];
-          $id_urut = (int) substr($id_merk, 3, 3);
-          $id_urut++;
-          $char = "MRK";
-          $id_merk = $char . sprintf("%03s", $id_urut);
-          mysqli_close($koneksi);
-          ?> 
-
-
 <div class="content-wrapper">
     <?php include "pengaturan/content-header.php" ?> 
         <section class="content">
-            <?php //include "pengaturan/content-section.php" ?> 
+            
+        <?php 
+          $id = $_GET['id_merk'];
+          //$name = $_POST['nm_merk'];
+          $query = "SELECT * FROM merk WHERE id_merk = '".$id."'";
+          $sql = mysqli_query($koneksi, $query);
+          $data = mysqli_fetch_array($sql);
+          mysqli_close($koneksi);
+        ?> 
+         
             
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Form Merk Barang</h3>
+                <h3 class="box-title">Update Merk Barang</h3>
             </div>
             <!-- FORM TAMBAH DATA BARANG -->
-            <form role="form" action="proses/merk_simpan.php" method="post" enctype="multipart/form-data">
+            <form role="form" action="proses/merk_ubah.php?id_merk=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
                   <label for="id_merk">ID MERK</label>
-                  <input type="text" class="form-control" id="id_merk" name="id_merk" placeholder="id merk" autocomplete="on"  value="<?php echo $id_merk; ?>" readonly/>
+                  <input type="text" class="form-control" id="id_merk" name="id_merk" placeholder="id merk" readonly value="<?php echo $id; ?>"/>
                 </div>
 
                 <div class="form-group">
-                  <label for="nm_merk">Nama Merk</label>
-                  <input type="text" class="form-control" id="nm_merk" name="nm_merk" placeholder="Nama Merk" autocomplete="on" />
+                  <label for="nama_merk">Nama Merk</label>
+                  <input type="text" class="form-control" id="nm_merk" name="nm_merk" placeholder="Nama Merk" autocomplete="on" value="<?php echo $data['nm_merk']; ?>"/>
                 </div>
 
                  <div class="form-group">
@@ -55,7 +51,7 @@
 
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Save Changes</button>
-                <a href="merk.php" class="btn btn-warning">Back</a>
+                <a href="barang_merk.php" class="btn btn-warning">Back</a>
               </div>
             </form>
         </div>

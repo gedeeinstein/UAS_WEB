@@ -58,7 +58,7 @@
                 <?php 
 
                  $query = "SELECT * FROM kategori /* where status ='active'*/"; // Query untuk menampilkan semua data kategori
-                 $sql = mysqli_query($koneksi, $query);
+                 $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
 
                 while($data = mysqli_fetch_array($sql)){ // Ambil semua data dari hasil eksekusi $sql
                     echo "<tr>";

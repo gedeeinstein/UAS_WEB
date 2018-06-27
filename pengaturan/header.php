@@ -26,8 +26,22 @@
   <![endif]-->
   
   <script src="bower_components/ckeditor/ckeditor.js"></script>
+  <!-- <script type="text/javascript" src="assets/js/bootbox.min.js"></script>
+  <script type="text/javascript" src="assets/js/delete_record.js"></script> -->
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <script language="javaScript" type="text/javascript">
+    $(document).ready(function(){
+        $("a.delete").click(function(e){
+            if(!confirm('Are you sure?')){
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        });
+    });
+  </script>
+  <?php
+  ?>
 </head>
