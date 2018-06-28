@@ -105,8 +105,17 @@
                 <div class="form-group">
                   <label for="store">Ketersedian</label>
                   <select class="form-control" id="availability" name="status">
-                    <option value="1">Ada</option>
-                    <option value="2">Tidak Ada</option>
+                  <?php //Menampilkan Data Kategori Pada Drop Down
+                
+                    $query = "SELECT * FROM status";
+                    $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
+                    while( $data = mysqli_fetch_assoc($sql) ) {
+                    ?>
+                    <option value="<?php echo $data["id_status"]; ?>"><?php echo $data["nm_status"]; ?></option>
+                    <?php 
+                    }
+                    //mysqli_close($koneksi);
+                    ?>
                   </select>
                 </div>
 
