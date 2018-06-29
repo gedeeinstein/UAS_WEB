@@ -6,6 +6,7 @@
   $sql = "INSERT INTO kategori (id_kategori,nm_kategori,status) VALUES('$id','$nama','$sts')";
   mysqli_query($koneksi,$sql);
   if($sql){
+    header("../location: kategori.php");
     echo '<script language="javascript">';
     echo 'alert("Data Ditambahkan"); location.href="../kategori.php"';
     echo '</script>';

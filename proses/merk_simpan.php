@@ -6,6 +6,7 @@
   $sql = "INSERT INTO merk (id_merk,nm_merk,status) VALUES('$id','$nama','$sts')";
   mysqli_query($koneksi,$sql);
   if($sql){
+    header("location: ../merk.php");
     echo '<script language="javascript">';
     echo 'alert("Data Ditambahkan"); location.href="../merk.php"';
     echo '</script>';
