@@ -145,5 +145,4 @@
 </div>
 <section>
 </div>
-<!-- <script>CKEDITOR.replace('description');</script> -->
 <?php include "pengaturan/footer.php";?>
