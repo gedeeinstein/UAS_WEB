@@ -46,7 +46,7 @@ ON a.id_merk = c.id_merk
 INNER JOIN gudang d
 ON a.id_gudang = d.id_gudang
 LEFT JOIN status_tbl e
-ON a.status = e.id_status";
+ON a.status = e.id_status ORDER BY nama_barang ASC";
 $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
 while( $data = mysqli_fetch_assoc($sql) ) {
 ?>
@@ -61,7 +61,7 @@ while( $data = mysqli_fetch_assoc($sql) ) {
                         <td><?php echo $data["nama_gudang"]; ?></td>
                         <td><span class="label label-success"><?php echo $data["STATUS"]; ?></span></td>
                         <td><a href="barang_ubah.php?id_barang=<?php echo $data["id_barang"]; ?>" class="btn btn-default"><i class="fa fa-pencil"></i></a> 
-                        <button href="proses/barang_hapus.php?id_barang=<?php echo $data["id_barang"]; ?>" type="button" class="btn btn-default"><i class="fa fa-trash"></i></button></td>
+                        <a href="proses/barang_hapus.php?id_barang=<?php echo $data["id_barang"];?>" type="button" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
                     </tr>
                     <?php
                         }

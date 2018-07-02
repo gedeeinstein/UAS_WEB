@@ -34,7 +34,7 @@
         <div class="box-body">
             <div class="form-group">
                 <label>Gambar Preview:</label>
-                    <img src="assets/images/<?php echo $data['gambar'];?>" width="50%" height="50% " class="img-circle">
+                    <img src="assets/images/<?php echo $data['gambar'];?>" width="10%" height="10% " class="img-circle">
             </div>
             <div class="form-group">
                 <label for="product_image">Update Gambar

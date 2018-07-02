@@ -16,7 +16,10 @@
         $tmp = $_FILES['product_image']['tmp_name'];
         
         // $gambar_baru = date('dmYHis').$gambar;
-        $gambar_baru = date('dmYHis').'_'.md5($gambar . microtime());
+        // $gambar_baru = date('dmYHis').'_'.md5($gambar . microtime());
+        // $lokasi = "../assets/images/".$gambar_baru;
+        $ekstension = substr( $gambar, strrpos( $gambar, '.' ) + 1); 
+        $gambar_baru = date('dmYHis').'_'.md5($gambar).'.'.$ekstension;
         $lokasi = "../assets/images/".$gambar_baru;
 
         if (move_uploaded_file($tmp, $lokasi))
