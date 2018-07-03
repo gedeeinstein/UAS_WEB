@@ -88,14 +88,31 @@ insert  into `merk`(`id_merk`,`nm_merk`,`status`) values ('MRK001','ATMCOOL','ac
 DROP TABLE IF EXISTS `status_tbl`;
 
 CREATE TABLE `status_tbl` (
-  `id_status` int(15) NOT NULL,
+  `id_status` int(15) NOT NULL AUTO_INCREMENT,
   `nm_status` varchar(20) NOT NULL,
   PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 /*Data for the table `status_tbl` */
 
-insert  into `status_tbl`(`id_status`,`nm_status`) values (1,'AKTIF'),(2,'TIDAK AKTIF'),(3,'ADA'),(4,'TIDAK ADA'),(5,'INDENT'),(6,'ON SHIPPING');
+insert  into `status_tbl`(`id_status`,`nm_status`) values (1,'AKTIF'),(2,'TIDAK AKTIF'),(3,'ADA'),(4,'TIDAK ADA'),(5,'INDENT'),(6,'ON SHIPPING'),(17,'nnnnnnnnnnnnnn');
+
+/*Table structure for table `suplier` */
+
+DROP TABLE IF EXISTS `suplier`;
+
+CREATE TABLE `suplier` (
+  `id_suplier` varchar(15) NOT NULL,
+  `nama_suplier` varchar(120) NOT NULL,
+  `alamat` text,
+  `email` varchar(50) NOT NULL,
+  `telepon` varchar(14) NOT NULL,
+  PRIMARY KEY (`id_suplier`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `suplier` */
+
+insert  into `suplier`(`id_suplier`,`nama_suplier`,`alamat`,`email`,`telepon`) values ('SUP001','CV. ANGKASA TEKNIK MANDIRI','PEDUNGAN','pur@atmcool.co.id','03618828381'),('SUP002','STAR EAST KITCHEN','Jalan Sunset Road No. 68 Kuta Badung','stareast@atmcool.co.id','03617109348');
 
 /*Table structure for table `user` */
 

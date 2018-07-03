@@ -1,4 +1,5 @@
 <?php 
+// session_start();
     $title = "Master Data Status";
     $master = "active menu-open";
     $suplier = "active";
@@ -12,7 +13,8 @@
 ?>
 <div class="content-wrapper">
 	<section class="content">
-		<div id="messages"></div>
+		<div id="messages">
+		</div>
 		<!-- <a href="status_tambah_frm.php"><button class="btn btn-primary" data-toggle="modal">Add Data Status</button></a><br><br> -->
 		<!-- type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default" -->
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Add Data Status</button> 
@@ -32,7 +34,8 @@
         </thead>
         <tbody>
     <?php 
-        
+    	// $edit_state = true;
+       
         $query = "SELECT * FROM status_tbl";
         $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
 
@@ -42,16 +45,15 @@
            <tr role="row" class="odd">
 			<td><?php echo $data['id_status']; ?></td>
 			<td><?php echo $data['nm_status']; ?></td>
-			<td><a href="status_ubah_frm.php?id_suplier=<?php echo $data['id_suplier'];?>" class="btn btn-default"><i class="fa fa-pencil"></i></a> 
- 			<a href="proses/suplier_hapus.php?id_suplier=<?php echo $data['id_suplier'];?>" class="btn btn-default"><i class="fa fa-trash"></i></a>
+			<td>
+			<a href="status_ubah_frm.php?id_status=<?php echo $data['id_status'];?>" class="btn btn-info" data-toggle="modal"><i class="fa fa-pencil"></i></button> 
+ 			<!-- <button type="button" class="btn btn-info" name="btn_ubah" data-toggle="modal" data-target="#modal-info"><i class="fa fa-pencil"></i></button> -->
+ 			<a href="proses/status_hapus.php?id_status=<?php echo $data['id_status'];?>" class="btn btn-default"><i class="fa fa-trash"></i></a>
             <!-- <button onclick="myFunction()" class="btn btn-default"><i class="fa fa-trash"></i></button></td> -->
             </td>		  
            </tr>
 
-    <?php 
-       }
-       // mysqli_close($koneksi);
-    ?>
+    <?php } ?>
          </tbody>
         </table>
       </div>
@@ -63,25 +65,32 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h3 class="box-title">Form Status Barang</h3>
+                <h3 class="box-title">Add Status Barang</h3>
               </div>
           <form role="form" action="status_simpan.php" method="post" enctype="multipart/form-data">
               <div class="modal-body">
-<!--               	<div class="form-group">
-                  <label for="nm_status">ID Status</label>
-                  <input type="number" class="form-control" id="id_status" name="id_status" />
-                </div> -->
+
+
+				<div class="form-group">
+                  <!-- <input type="hidden" class="form-control" id="id_status" name="id_status" value="<?php //echo $id_status; ?>" /> -->
+                </div>
 
 				<div class="form-group">
                   <label for="nm_status">Nama Status</label>
                   <input type="text" class="form-control" id="nm_status" name="nm_status" placeholder="Nama Status" autocomplete="on" />
+                	
                 </div>
 
               </div>
           
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="simpan" class="btn btn-primary" value="Simpan">Save changes</button>
+                <!-- <?php //if ($edit_state == false): ?> -->
+                	 <button type="submit" class="btn btn-primary" name="simpan" value="Simpan">Save Changes</button>
+                <!-- <?php //else: ?> -->
+                	 
+                <?php //endif ?>
+               
               </div>
           </form>
             </div>
@@ -89,18 +98,59 @@
           </div>
           <!-- /.modal-dialog -->
         </div>
-
+<!-- 
 
 <?php 
+// require 'koneksi.php';
+//   $id = $data['id_status'];;
+//   $query = "SELECT * FROM status_tbl where id_status = '".$id."'";
+//   $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
+//   $data = mysqli_fetch_array($sql);
+//   // mysqli_close($koneksi);
 
-// if (isset($_POST['simpan'])) {
-// 	  $nm_status = $_POST['nm_status'];
-// 	  $query = "INSERT INTO status_tbl (nm_status) VALUES ('$nm_status')";
-// 	  $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
-// 	  // mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
-// 	  header('location: status.php');
-// }
-?>
+?> 
+        <div class="modal fade" id="modal-info">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h3 class="box-title">Ubah Status</h3>
+              </div>
+              	<?php 
+              	    
+       				
+           //    		$id_status = $_GET['id_status'];
+           //    		$query = "SELECT * FROM status_tbl where id_status='".$id_status."' ";
+			        // $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
+           // 			// while ($data = mysqli_fetch_array($sql)) {
+			        // $data = mysqli_fetch_array($sql);
+
+              	 ?>
+
+          <form role="form" action="proses/status_ubah.php?id_status=<?php //echo $data['id_status']; ?>" method="post" enctype="multipart/form-data">
+              <div class="modal-body">
+
+
+				<div class="form-group">
+                  <input type="hidden" class="form-control" id="id_status" name="id_status" value="<?php //echo $data['id_status'];?>" autocomplete="on" />
+                </div>              	
+				<div class="form-group">
+                  <label for="nm_status">Nama Status</label>
+                  <input type="text" class="form-control" id="nm_status" name="nm_status" value="<?php //echo $data['nm_status']; ?>" autocomplete="on" />
+                </div>
+		<?php //} ?> -->
+
+<!--               </div>
+          
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="ubah" value="Simpan">Update</button>
+              </div>
+          </form>
+            </div>
+          </div> -->
+        <!-- </div> -->
 
 
 
