@@ -1,20 +1,20 @@
 <?php
   include '../pengaturan/koneksi.php';
-  $id_suplier = $_GET['id_suplier'];
+  $id_status = $_GET['id_status'];
 
 
-  $sql = "DELETE FROM suplier WHERE id_suplier = '".$id_suplier."'";
+  $sql = "DELETE FROM status_tbl WHERE id_status = '".$id_status."'";
   mysqli_query($koneksi,$sql);
   
 
   if($sql){
     echo '<script language="javascript">';
-    echo 'alert("Data Dihapus"); location.href="../suplier.php"';
+    echo 'alert("Data Status Dihapus"); location.href="../status.php"';
     echo '</script>';
     //header("location: kategori.php");
   }else{
     echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
-    echo "<br><a href='../suplier.php'>Kembali Ke List Suplier</a>";
+    echo "<br><a href='../status.php'>Kembali Ke List Status</a>";
   }
 
 
