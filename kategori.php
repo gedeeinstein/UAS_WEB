@@ -71,19 +71,6 @@
                   }
                   mysqli_close($koneksi);
                 ?>
-
-                <?php
-                // $table = "kategori";
-                // $primary_key = "id_kategori";
-                // $columns = array(
-                //   array( 'db' => 'nama_kategory', 'dt' => 0),
-                //   array( 'db' => 'status', 'dt' => 1 )
-                // );
-                // echo json_encode(
-                //   SSP::simple( $_GET, $koneksi, $table, $primary_key, $columns )
-                // );
-
-                ?>
                   </tbody>
                 </table>
               </div>

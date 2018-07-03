@@ -80,6 +80,24 @@
                 </li>
               </ul>
             </li>
+            <!-- SUPLIER -->
+            <li class="treeview">
+              <a href="#"><i class="fa fa-dot-circle-o"></i>Suplier
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="suplier.php"><i class="fa fa-circle-o"></i>Daftar Suplier</a>
+                </li>
+                <li>
+                  <a href="suplier_tambah_frm.php"><i class="fa fa-circle-o"></i>Tambah Suplier</a>
+                </li>
+              </ul>
+            </li>
+
+
           </ul>
         </li>
         <li class="treeview active">
