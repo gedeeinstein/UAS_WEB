@@ -23,7 +23,7 @@
           $id_urut++;
           $char = "KTG";
           $id_kat = $char . sprintf("%03s", $id_urut);
-          mysqli_close($koneksi);
+          // mysqli_close($koneksi);
           ?> 
             
         <div class="box">
@@ -61,6 +61,9 @@
               </div>
             </form>
         </div>
+        <?php   mysqli_close($koneksi); ?>
         <section>
 </div>
-<?php include "pengaturan/footer.php";?>
+<?php 
+// mysql_close($koneksi);
+include "pengaturan/footer.php";?>

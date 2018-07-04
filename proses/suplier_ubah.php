@@ -26,4 +26,5 @@
       echo "<br><a href='../suplier_ubah.php?id_suplier=$id_suplier'>Kembali Ke Form</a>";
     }
   }
+    mysqli_close($koneksi);
 ?>

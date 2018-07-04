@@ -12,4 +12,5 @@
     echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
     echo "<br><a href='../kategori.php'>Kembali Ke List Kategori</a>";
   }
+   mysqli_close($koneksi);
 ?>

@@ -28,6 +28,7 @@
       echo "<br><a href='../suplier_tambah.php'>Kembali Ke Form</a>";
     }
   }
+    mysqli_close($koneksi);
 
 
 

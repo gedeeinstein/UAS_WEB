@@ -72,6 +72,7 @@
         }
       }
   }
+    mysqli_close($koneksi);
 
   // $sql = "UPDATE merk SET nm_merk = '$nama',status='$sts' WHERE id_merk = '".$id."'" ;
 

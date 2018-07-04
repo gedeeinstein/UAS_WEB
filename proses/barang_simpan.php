@@ -62,6 +62,7 @@
       {
         $warning = error_get_last();
       }
+    mysqli_close($koneksi);
   // }else{
     // if($nama_barang !='' && $sku !='' && $merk !='')
     //   {

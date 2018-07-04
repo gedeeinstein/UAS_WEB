@@ -30,11 +30,13 @@ if (isset($_POST['ubah'])) {
    {
     // $_SESSION['messages'] = "DATA DIHAPUS";
     header('location: ../status.php');
+    mysqli_close($koneksi);
    }
     else
     {
       echo "Data Gagal DiUbah <br />";
       echo  mysqli_error($koneksi);
+
     }
   }
   }

@@ -29,6 +29,6 @@ session_start();
     echo mysqli_error($koneksi);
     echo "<br><a href='../status.php'>Kembali Ke List Suplier</a>";
   }
-
+    mysqli_close($koneksi);
 
 ?>

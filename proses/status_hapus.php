@@ -16,6 +16,7 @@
       echo "Data Gagal Disimpan <br />";
       echo  mysqli_error($koneksi);
     }
+     mysqli_close($koneksi);
 
   // if($sql){
   //   echo '<script language="javascript">';

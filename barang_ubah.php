@@ -144,5 +144,6 @@
     </form>
 </div>
 <section>
+    <?php mysqli_close($koneksi); ?>
 </div>
 <?php include "pengaturan/footer.php";?>

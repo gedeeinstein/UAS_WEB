@@ -15,4 +15,5 @@
     echo "Maaf, Terjadi kesalahan saat mencoba untuk menyimpan data ke database.";
     echo "<br><a href='../merk_tambah.php'>Kembali Ke Form</a>";
   }
+   mysqli_close($koneksi);
 ?>
