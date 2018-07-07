@@ -78,11 +78,11 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" class="form-control pull-right" id="datepicker">
+                    <input type="text" class="form-control pull-right" id="datepicker" name="tgl_masuk">
                 </div>
             </div>
- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Pilih Barang</button> 
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-simpan">Simpan</button> 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Pilih Barang</button> 
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-simpan">Simpan</button> 
         </div>
         <div class="col-md-6">
             <div class="form-group">
@@ -195,6 +195,32 @@ if ($id_bar != null) {
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
+
+
+
+<div class="modal modal-default fade" id="modal-simpan">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Simpan Data</h4>
+              </div>
+              <div class="modal-body">
+                <p>Simpan Semua Data barang Masuk ?&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" name="save_all">Save changes</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+
+
 
 
 <?php include "pengaturan/footer.php";?>
