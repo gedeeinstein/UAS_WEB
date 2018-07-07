@@ -96,6 +96,23 @@
                 </li>
               </ul>
             </li>
+            
+            <!-- Status Master -->
+            <li class="treeview">
+              <a href="#"><i class="fa fa-dot-circle-o"></i>Status
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li>
+                  <a href="status.php"><i class="fa fa-circle-o"></i>Daftar Status</a>
+                </li>
+                <li>
+                  <a href="status_tambah_frm.php"><i class="fa fa-circle-o"></i>Tambah Status</a>
+                </li>
+              </ul>
+            </li>
 
 
           </ul>

@@ -1,3 +1,5 @@
+  
+<!DOCTYPE html>
 <?php 
     $title = "Tambah Barang Masuk";
     $master = "active menu-open";
@@ -8,188 +10,283 @@
     include "pengaturan/header.php";
     include "pengaturan/header-menu.php";
     include "pengaturan/sidebar-menu.php";
+
+    $kode_total = "SELECT max(id_masuk) as maxKode from barang_masuk"; // mencari kode barang dengan nilai paling besar
+          $eksekusi1 = mysqli_query($koneksi,$kode_total);  // kueri eksekusi di php
+          $data = mysqli_fetch_array($eksekusi1);
+          $id_bar = $data['maxKode'];
+          $id_urut = (int) substr($id_bar, 3, 3);
+          $id_urut++;
+          $char = "BMS";
+          $id_bar = $char . sprintf("%03s", $id_urut);
+          //mysqli_close($koneksi);
+          ?>
+          
 ?>
-<div class="content-wrapper">
+<html>
+<head> 
+      <title>detail transaksi masuk</title>  
+    <link rel="stylesheet" href="assets/baru/jquery-ui.css">
+    <link rel="stylesheet" href="assets/baru/bootstrap.min.css">
+    <script src="assets/baru/jquery-1.12.4.js"></script>
+    <script src="assets/baru/jquery-ui.js"></script>
+    <!-- Select2 -->
+  <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+    <!-- Select2 -->
+<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+</head>  
+    <body>  
+      <div class="content-wrapper">
     <!-- Untuk Menampilkan Breadcum Otomatis Sesuai Isi Halaman -->
     <?php include "pengaturan/content-header.php" ?> 
     <section class="content">
-        <?php //include "pengaturan/content-section.php" ?> 
-            <!-- <div id="messages"></div>
-            <a href="barang_tambah.php"><button class="btn btn-primary" data-toggle="modal">Tambah Barang Masuk</button></a>
-            <br>
-            <br> -->
-			
-			
-
-  <!-- Main content -->
-  <section class="content">
     <!-- Small boxes (Stat box) -->
     <div class="row">
       <div class="col-md-12 col-xs-12">
 
         <div id="messages"></div>
-
-        
-
         <div class="box">
-          <!--<div class="box-header">
-            <h3 class="box-title">Add Order</h3>
-          </div>-->
-          <!-- /.box-header -->
-          <form role="form" action="" method="post" class="form-horizontal">
-              <div class="box-body">
-
-                
+        <form method="post" id="detail_barang_masuk" class="form-horizontal">
+           <div class="box-body">
                 <div class="form-group">
-                  <label for="gross_amount" class="col-sm-12 control-label">Date: <?php echo date('Y-m-d') ?></label>
+                  <label class="col-sm-12 control-label">Date: <?php echo date('Y-m-d') ?></label>
                 </div>
                 <div class="form-group">
-                  <label for="gross_amount" class="col-sm-12 control-label">Date: <?php echo date('h:m a') ?></label>
+                  <label class="col-sm-12 control-label">Date: <?php echo date('h:m a') ?></label>
+                </div>
+                  <div class="col-md-4 col-xs-12 pull pull-left">
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label" style="text-align:left;">ID Masuk</label>
+                    <div class="col-sm-7">
+                    <input type="text" class="form-control" id="id_masuk" name="id_masuk" placeholder="id masuk" autocomplete="on" value="<?php echo $id_bar; ?>" readonly/> 
+                  <!-- Menggunakan Kode Otomatis Barang -->
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label" style="text-align:left;">Supplyer</label>
+                    <div class="col-sm-7">
+                     <select class="form-control select2" name="supplier" style="width:100%;" required>
+                            <?php //Menampilkan Data Merk Pada Drop Down
+                            $query = "SELECT * FROM suplier";
+                            $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
+                            while( $data = mysqli_fetch_array($sql) ) { 
+                            ?>
+                              <option selected="selected" value="<?php echo $data["id_suplier"]; ?>"><?php echo $data["nama_suplier"]; ?></option>
+                            <?php 
+                            }
+                            //mysqli_close($koneksi);
+                            ?>
+                      </select>
+                    </div>
+                    </div>
+                    </div> 
+                        <div class="table-responsive">
+                         <table class="table table-striped table-bordered" id="tambah_data">
+                          <tr>
+                            <th style="width:80%">Product</th>
+                            <th style="width:20%">Qty</th>
+                            <th colspan="2"><button type="button" name="add" id="add" class="btn btn-default"><i class="fa fa-plus"></i></button></th>
+                          </tr>
+                         </table>
+                        </div>
+                        <div class="col-md-6 col-xs-12 pull pull-right">
+                        <div class="form-group">
+                            <label for="net_amount" class="col-sm-5 control-label">Total QTY</label>
+                            <div class="col-sm-7">
+                              <input type="text" class="form-control" id="net_amount" name="net_amount" disabled autocomplete="off">
+                              <input type="hidden" class="form-control" id="net_amount_value" name="net_amount_value" autocomplete="off">
+                            </div>
+                          </div>
+                        </div>
+                        
+                       </form>
+                       <div class="box-footer">
+                          <button type="submit" name="insert" id="insert" class="btn btn-primary">SIMPAN</button>
+                          <a href="transaksi_brg_masuk.php" class="btn btn-warning">Back</a>
+                        </div>
                 </div>
 
-                <div class="col-md-4 col-xs-12 pull pull-left">
-
-                  <div class="form-group">
-                    <label for="gross_amount" class="col-sm-5 control-label" style="text-align:left;">Supplyer</label>
-                    <div class="col-sm-7">
-					<select class="form-control select_group product" data-row-id="row_1" id="product_1" name="product[]" style="width:100%;" onchange="getProductData(1)" required>
-                            <option value=""></option>
-                            <option value="3">SUPPLIER 1</option>
-                            <option value="2">SUPPLIER 2</option>
-                        </select>
-                      <!--<input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Enter Customer Name" autocomplete="off" />-->
-                    </div>
-                  </div>
-					<!--
-                  <div class="form-group">
-                    <label for="gross_amount" class="col-sm-5 control-label" style="text-align:left;">Customer Address</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Enter Customer Address" autocomplete="off">
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="gross_amount" class="col-sm-5 control-label" style="text-align:left;">Customer Phone</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Enter Customer Phone" autocomplete="off">
-                    </div>
-                  </div>-->
-                </div>
-                
-                
-                <br /> <br/>
-                <table class="table table-bordered" id="product_info_table">
-                  <thead>
-                    <tr>
-                      <th style="width:50%">Product</th>
-                      <th style="width:10%">Qty</th>
-                      <!--
-					  <th style="width:10%">Rate</th>
-                      <th style="width:20%">Amount</th>
-					  -->
-                      <th style="width:10%"><button type="button" id="add_row" class="btn btn-default"><i class="fa fa-plus"></i></button></th>
-                    </tr>
-                  </thead>
-
-                   <tbody>
-                     <tr id="row_1">
-                       <td>
-                        <select class="form-control select_group product" data-row-id="row_1" id="product_1" name="product[]" style="width:100%;" onchange="getProductData(1)" required>
-                            <option value=""></option>
-                            <option value="3">GENERAL MEAT SLICER GSE 112-50</option>
-                            <option value="2">GENERAL MEAT GRINDER GSM 50-50</option>
-                        </select>
-                        </td>
-                        <td><input type="text" name="qty[]" id="qty_1" class="form-control" required onkeyup="getTotal(1)"></td>
-                        <!--
-						<td>
-                          <input type="text" name="rate[]" id="rate_1" class="form-control" disabled autocomplete="off">
-                          <input type="hidden" name="rate_value[]" id="rate_value_1" class="form-control" autocomplete="off">
-                        </td>
-                        <td>
-                          <input type="text" name="amount[]" id="amount_1" class="form-control" disabled autocomplete="off">
-                          <input type="hidden" name="amount_value[]" id="amount_value_1" class="form-control" autocomplete="off">
-                        </td>
-						-->
-                        <td><button type="button" class="btn btn-default" onclick="removeRow('1')"><i class="fa fa-close"></i></button></td>
-                     </tr>
-                   </tbody>
-                </table>
-
-                <br /> <br/>
-
-                <div class="col-md-6 col-xs-12 pull pull-right">
-
-                  <!--
-				  <div class="form-group">
-                    <label for="gross_amount" class="col-sm-5 control-label">Gross Amount</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="gross_amount" name="gross_amount" disabled autocomplete="off">
-                      <input type="hidden" class="form-control" id="gross_amount_value" name="gross_amount_value" autocomplete="off">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="service_charge" class="col-sm-5 control-label">S-Charge 5 %</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="service_charge" name="service_charge" disabled autocomplete="off">
-                      <input type="hidden" class="form-control" id="service_charge_value" name="service_charge_value" autocomplete="off">
-                    </div>
-                  </div>
-				  <div class="form-group">
-                    <label for="vat_charge" class="col-sm-5 control-label">Vat 10 %</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="vat_charge" name="vat_charge" disabled autocomplete="off">
-                      <input type="hidden" class="form-control" id="vat_charge_value" name="vat_charge_value" autocomplete="off">
-                    </div>
-                  </div>
-				  
-                  <div class="form-group">
-                    <label for="discount" class="col-sm-5 control-label">Discount</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="discount" name="discount" placeholder="Discount" onkeyup="subAmount()" autocomplete="off">
-                    </div>
-                  </div>
-                  -->
-				  
-				  <div class="form-group">
-                    <label for="net_amount" class="col-sm-5 control-label">Total QTY</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control" id="net_amount" name="net_amount" disabled autocomplete="off">
-                      <input type="hidden" class="form-control" id="net_amount_value" name="net_amount_value" autocomplete="off">
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <!-- /.box-body -->
-
-              <div class="box-footer">
-                <input type="hidden" name="service_charge_rate" value="5" autocomplete="off">
-                <input type="hidden" name="vat_charge_rate" value="10" autocomplete="off">
-                <button type="submit" class="btn btn-primary">Create Order</button>
-                <a href="http://localhost/stock/orders/" class="btn btn-warning">Back</a>
-              </div>
-            </form>
-          <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-      </div>
-      <!-- col-md-12 -->
-    </div>
-    <!-- /.row -->
-    
-
-  </section>
-  <!-- /.content -->
-
-			
-			
-			
-			
-			
-			
-
-
+  <div id="table_input" title="Tambah Data">
+   <div class="form-group">
+    <label>Nama Barang</label>
+    <select class="form-control select2" name="nama_barang" id="nama_barang" style="width:100%;">
+                            <?php //Menampilkan Data Merk Pada Drop Down
+                            $query = "SELECT * FROM barang";
+                            $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
+                            while( $data2 = mysqli_fetch_array($sql) ) { 
+                            ?>
+                              <option selected="selected" value="<?php echo $data2["id_barang"]; ?>"><?php echo $data2["nama_barang"]; ?></option>
+                            <?php 
+                            }
+                            //mysqli_close($koneksi);
+                            ?>
+    </select>
+    <span id="error_nama_barang" class="text-danger"></span>
+   </div>
+   <div class="form-group">
+    <label>QTY</label>
+    <input type="text" name="qty" id="qty" class="form-control" />
+    <span id="error_qty" class="text-danger"></span>
+   </div>
+   <div class="form-group" align="center">
+    <input type="hidden" name="row_id" id="hidden_row_id" />
+    <button type="button" name="save" id="save" class="btn btn-info">Save</button>
+   </div>
+  </div>
+  <div id="action_alert" title="Action">
+  </div>
+</form>
 </div>
+</div>
+</div>
+</section>
+</div>
+    </body>  
+</html> 
 
-<?php include "pengaturan/footer.php";?>
+<script>  
+$(document).ready(function(){
+$('.select2').select2() 
+ 
+ var count = 0;
+
+ $('#table_input').dialog({
+  autoOpen:false,
+  width:400
+ });
+
+ $('#add').click(function(){
+  $('#table_input').dialog('option', 'title', 'Tambah Data');
+  $('#nama_barang').val('');
+  $('#qty').val('');
+  $('#error_nama_barang').text('');
+  $('#error_qty').text('');
+  $('#nama_barang').css('border-color', '');
+  $('#qty').css('border-color', '');
+  $('#save').text('Save');
+  $('#table_input').dialog('open');
+ });
+$('#save').click(function(){
+    var error_nama_barang = '';
+    var error_qty = '';
+    var nama_barang = '';
+    var qty = ''; 
+    if($('#nama_barang').val() == '')
+    {
+      error_nama_barang = 'data required';
+      $('#error_nama_barang').text(error_nama_barang);
+      $('#nama_barang').css('border-color', '#cc0000');
+      nama_barang = '';
+    }
+    else
+    {
+      error_nama_barang = '';
+      $('#error_nama_barang').text(error_nama_barang);
+      $('#nama_barang').css('border-color', '');
+      nama_barang = $('#nama_barang').val();
+    }
+    if($('#qty').val() == '')
+    {
+      error_qty = 'data required';
+      $('#error_qty').text(error_qty);
+      $('#qty').css('border-color', '#cc0000');
+      qty = '';
+    }
+    else
+    {
+      error_qty = '';
+      $('#error_qty').text(error_qty);
+      $('#qty').css('border-color', '');
+      qty = $('#qty').val();
+    }
+    if(error_nama_barang != '' || error_qty != '')
+    {
+      return false;
+    }
+    else
+    {
+      if($('#save').text() == 'Save')
+      {
+        count = count + 1;
+        output = '<tr id="row_'+count+'">';
+        output += '<td>'+nama_barang+' <input type="hidden" name="hidden_nama_barang[]" id="nama_barang'+count+'" class="nama_barang" value="'+nama_barang+'" /></td>';
+        output += '<td>'+qty+' <input type="hidden" name="hidden_qty[]" id="qty'+count+'" value="'+qty+'" /></td>';
+        output += '<td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="'+count+'">View</button></td>';
+        output += '<td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="'+count+'">Remove</button></td>';
+        output += '</tr>';
+        $('#tambah_data').append(output);
+      }
+      else
+      {
+        var row_id = $('#hidden_row_id').val();
+        output = '<td>'+nama_barang+' <input type="hidden" name="hidden_nama_barang[]" id="nama_barang'+row_id+'" class="nama_barang" value="'+nama_barang+'" /></td>';
+        output += '<td>'+qty+' <input type="hidden" name="hidden_qty[]" id="qty'+row_id+'" value="'+qty+'" /></td>';
+        output += '<td><button type="button" name="view_details" class="btn btn-warning btn-xs view_details" id="'+row_id+'">View</button></td>';
+        output += '<td><button type="button" name="remove_details" class="btn btn-danger btn-xs remove_details" id="'+row_id+'">Remove</button></td>';
+        $('#row_'+row_id+'').html(output);
+      }
+
+      $('#tambah_data').dialog('close');
+    }
+  });
+
+  $(document).on('click', '.view_details', function(){
+    var row_id = $(this).attr("id");
+    //var id_masuk = $('#id_masuk'+row_id+'').val();
+    var nama_barang = $('#nama_barang'+row_id+'').val();
+    var qty = $('#qty'+row_id+'').val();
+    //$('#id_masuk').val(id_masuk);
+    $('#nama_barang').val(nama_barang);
+    $('#qty').val(qty);
+    $('#save').text('Edit');
+    $('#hidden_row_id').val(row_id);
+    $('#tambah_data').dialog('option', 'title', 'Edit Data');
+    $('#tambah_data').dialog('open');
+  });
+
+  $(document).on('click', '.remove_details', function(){
+    var row_id = $(this).attr("id");
+    if(confirm("Yakin ingin hapus data?"))
+    {
+      $('#row_'+row_id+'').remove();
+    }
+    else
+    {
+      return false;
+    }
+  });
+
+  $('#action_alert').dialog({
+    autoOpen:false
+  });
+
+  $('#detail_barang_masuk').on('submit', function(event){
+    event.preventDefault();
+    var count_data = 0;
+    $('.nama_barang').each(function(){
+      count_data = count_data + 1;
+    });
+    if(count_data > 0)
+    {
+      var form_data = $(this).serialize();
+      $.ajax({
+        url:"tr_barang_tambah2.php",
+        method:"POST",
+        data:form_data,
+        success:function(data)
+        {
+          $('#detail_barang_masuk').find("tr:gt(0)").remove(); alert('Berhasil Tambah Data');document.location='transaksi_brg_masuk.php'; 
+          $('#action_alert').dialog('open');
+        }
+      })
+    }
+    else
+    {
+      $('#action_alert').html('<p>Please Add atleast one data</p>');
+      $('#action_alert').dialog('open');
+    }
+  });
+  
+});  
+</script>

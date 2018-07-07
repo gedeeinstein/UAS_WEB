@@ -13,7 +13,7 @@
     <?php include "pengaturan/content-header.php" ?> 
     <section class="content">
      <div id="messages"></div>
-     <a href="tr_brg_masuk_tambah.php"><button class="btn btn-primary" data-toggle="modal">Tambah Barang Masuk</button></a>
+     <a href="brg_masuk.php"><button type="submit" name="tambah_data" class="btn btn-primary">Tambah Barang Masuk</button></a> - <a href="transaksi_brg_masuk_print.php"><button  class="btn btn-default">Print</button></a>
 	 <br>
 	 <br>
         <div class="box">	 
@@ -22,9 +22,45 @@
             </div>
             <div class="box-body">
                <!-- KONTEN DISINI-->
+<table id="manageTable" class="table table-bordered table-striped">
+              <thead>
+              <tr>
+                <th>ID Transaksi</th>
+                <th>Nama Suplier</th>
+                <th>Tgl Transaksi</th>
+                <th>Telp</th>
+                <th>Email</th>
+                <th>Action</th>
+
+
+              </tr>
+              </thead>
+              <?php  
+              $query ="SELECT * FROM barang_masuk a INNER JOIN suplier b ON a.id_suplier = b.id_suplier";
+                $sql = mysqli_query($koneksi,$query);
+                while( $data = mysqli_fetch_assoc($sql) ) {
+                // while ($data = mysqli_fetch_assoc($sql){
+              ?>
+              <tbody>
+                  <tr role="row" class="odd">
+                        <td><?php echo $data["id_masuk"]; ?></td>
+                        <td><?php echo $data["nama_suplier"]; ?></td>
+                        <td><?php echo $data["tgl_masuk"]; ?> </td>
+                        <td><?php echo $data["telepon"]; ?></td>
+                        <td><?php echo $data["email"]; ?></td>
+                        <td><a href="##?id_masuk=<?php echo $data["id_masuk"]; ?>" class="btn btn-default"><i class="fa fa-pencil"></i></a> 
+                        <a href="##?id_masuk=<?php echo $data["id_masuk"];?>" type="button" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                    <?php
+                        }
+                        mysqli_close($koneksi);
+                    ?>
+                </tbody>
+            </table>
+            
+
             </div>
         </div>	
     <section>
 </div>
-
 <?php include "pengaturan/footer.php";?>

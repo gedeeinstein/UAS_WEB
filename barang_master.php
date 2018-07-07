@@ -32,9 +32,10 @@
                 <!--<th>Harga</th>-->
                 <th>Qty</th>
                 <th>Gudang</th>
-                <th>Availability</th>
-                 <?php //if(in_array('updateProduct', $user_permission) || in_array('deleteProduct', $user_permission)): ?> 
-                  <th>Action</th>
+                <th>Availability</th>                  
+                <th>Action</th>
+
+
 <?php
 // $query = "SELECT * FROM barang, gudang where barang.id_gudang= gudang.id_gudang";
 $query = "SELECT a.id_barang, a.gambar, a.sku, a.nama_barang, b.nm_kategori, c.nm_merk, d.nama_gudang, a.stok, a.deskripsi, e.nm_status
@@ -61,8 +62,9 @@ while( $data = mysqli_fetch_assoc($sql) ) {
                         <td><?php echo $data["nama_gudang"]; ?></td>
                         <td><span class="label label-success"><?php echo $data["STATUS"]; ?></span></td>
                         <td><a href="barang_ubah.php?id_barang=<?php echo $data["id_barang"]; ?>" class="btn btn-default"><i class="fa fa-pencil"></i></a> 
-                        <a href="proses/barang_hapus.php?id_barang=<?php echo $data["id_barang"];?>" type="button" class="btn btn-default"><i class="fa fa-trash"></i></a></td>
+                        <a href="proses/barang_hapus.php?id_barang=<?php echo $data["id_barang"];?>" onClick="return confirm('Apakah anda yakin menghapus data ?')" type="button" class="btn btn-default" ><i class="fa fa-trash"></i></a></td>
                     </tr>
+
                     <?php
                         }
                         mysqli_close($koneksi);
