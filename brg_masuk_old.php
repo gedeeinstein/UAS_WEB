@@ -41,14 +41,76 @@
     </div>
 
     <div class="box-body">
-<!-- <form method="post" id="insert_form"> -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-danger">
+                <div class="form-group">
+                <label>Nama Suplier</label>
+                <select class="select2" name="nama_suplier" style="width: 100%;" id="nama_suplier">
+                    <?php
+                        $query = "SELECT * from suplier";
+                        $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
+                        while($data = mysqli_fetch_array($sql)){;
+                    ?>
+                            <option value="<?= $data['id_suplier']; ?>"><?= $data['nama_suplier'];?></option>
+                    <?php   
+                         } 
+                    ?>
 
-<input type="hidden" class="form-control pull-right" id="id_brg_masuk" name="id_brg_masuk" value="<?php echo $id_bar; ?>" readonly>
+                </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tanggal Masuk</label>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <!-- <input type="text" class="form-control pull-right" id="datepicker"> -->
+                     <input type="text" class="form-control pull-right" id="datepicker" name="tgl_masuk">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Total Barang Masuk</label>
+                <div class="input-group date">
+                    <?php 
+
+                    $query_tot = ("SELECT sum(qty) FROM detail_masuk where id_masuk = '".$id_bar."'");
+                    $sql_tot = mysqli_query($koneksi, $query_tot);
+
+                    while ($tot_qty = mysqli_fetch_array($sql_tot)) {
+                    ?>
+
+                    <div class="input-group-addon">
+                        <i class="fa fa-shopping-cart"></i>
+                    </div>
+                    <input type="number" class="form-control pull-right" value="<?php echo $tot_qty['sum(qty)'];?>" readonly id="total_qty" name="total_qty">
+                    <?php } ?>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>ID MASUK</label>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="id_brg_masuk" name="id_brg_masuk" value="<?php echo $id_bar; ?>" readonly>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">Pilih Barang</button> 
-<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#modal-simpan">Simpan</button>  <!-- data-toggle="modal" data-target="#modal-simpan" name="save_all" id="save_all" -->  
+<button type="submit" class="btn btn-success" name="save_all" id="save_all">Simpan</button>  <!-- data-toggle="modal" data-target="#modal-simpan" -->  
 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-hapus">Reset Data</button> 
-<!-- </form> -->
+
 
 <hr />
 
@@ -141,84 +203,16 @@
                 <h4 class="modal-title">Simpan Data Masuk</h4>
             </div>
         <form role="form" action="proses/brg_masuk_proses.php" method="post" enctype="multipart/form-data">
-        <!-- <form role="form" id="insert_form"> -->
             <div class="modal-body">
                 <p>Simpan Semua Data barang Masuk ?</p>
             </div>
 
-
-                <div class="row">
-        <div class="col-md-6">
-            <div class="box box-danger">
-                <div class="form-group">
-                <label>Nama Suplier</label>
-                <select class="select2" name="nama_suplier" style="width: 100%;" id="nama_suplier">
-                    <?php
-                        $query = "SELECT * from suplier";
-                        $sql = mysqli_query($koneksi, $query) or die("database error:". mysqli_error($koneksi));
-                        while($data = mysqli_fetch_array($sql)){;
-                    ?>
-                            <option value="<?= $data['id_suplier']; ?>"><?= $data['nama_suplier'];?></option>
-                    <?php   
-                         } 
-                    ?>
-
-                </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Tanggal Masuk</label>
-                <div class="input-group date">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                     <input type="text" class="form-control pull-right" id="datepicker" name="tgl_masuk">
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Total Barang Masuk</label>
-                <div class="input-group date">
-                    <?php 
-
-                    $query_tot = ("SELECT sum(qty) FROM detail_masuk where id_masuk = '".$id_bar."'");
-                    $sql_tot = mysqli_query($koneksi, $query_tot);
-
-                    while ($tot_qty = mysqli_fetch_array($sql_tot)) {
-                    ?>
-
-                    <div class="input-group-addon">
-                        <i class="fa fa-shopping-cart"></i>
-                    </div>
-                    <input type="number" class="form-control pull-right" value="<?php echo $tot_qty['sum(qty)'];?>" readonly id="total_qty" name="total_qty">
-                    <?php } ?>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>ID MASUK</label>
-                <div class="input-group date">
-                    <div class="input-group-addon">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                    <input type="text" class="form-control pull-right" id="id_brg_masuk" name="id_brg_masuk" value="<?php echo $id_bar; ?>" readonly>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" id="simpan_data" name="simpan_data">Simpan</button>
+                <button type="submit" class="btn btn-success" id="save_all" name="save_all">Simpan</button>
             </div>
         </form>
-
+        
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -228,7 +222,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Hapus Semua Inputan Data</h4>
+                <h4 class="modal-title">Simpan Data</h4>
             </div>
             <div class="modal-body">
                 <p>Hapus Semua Inputan Data Barang Masuk ?</p>
@@ -272,9 +266,25 @@ $('#datepicker').datepicker({
       else if($('#total_qty').val() == '')
       {  
        alert("Total Barang Kosoong");  
-      }   
-
-});
+      }
+       
+      else  
+      {  
+       $.ajax({  
+        url:"proses/brg_masuk.php",  
+        method:"POST",  
+        data:$('#insert_form').serialize(),  
+        success: function() {
+                    $('#messages').load("transaksi_brg_masuk.php");
+        }
+        // success:function(data){  
+        //  $('#insert_form')[0].reset();  
+        //  // $('#add_data_Modal').modal('hide');  
+        //  // $('#employee_table').html(data);  
+        // }  
+   });  
+  }  
+ });
 
 });  
 
