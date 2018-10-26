@@ -56,35 +56,41 @@
       </div>
     </div>
 
-<div class="modal fade" id="modal-default">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="box-title">Add Status Barang</h3>
-      </div>
-      
+		<div class="modal fade" id="modal-default">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h3 class="box-title">Add Status Barang</h3>
+              </div>
       <form role="form" action="status_simpan.php" method="post" enctype="multipart/form-data">
         <div class="modal-body">
+        	<div class="form-group">
+                  <!-- <input type="hidden" class="form-control" id="id_status" name="id_status" value="<?php //echo $id_status; ?>" /> -->
+          </div>
 				  <div class="form-group">
-            <label for="nm_status">Nama Status</label>
-            <input type="text" class="form-control" id="nm_status" name="nm_status" placeholder="Nama Status" autocomplete="on" required/>
+                  <label for="nm_status">Nama Status</label>
+                  <input type="text" class="form-control" id="nm_status" name="nm_status" placeholder="Nama Status" autocomplete="on" required/>
+                	
           </div>
-
-          <div class="form-group">
-            <label for="nm_status">Nama Status</label>
-            <input type="text" class="form-control" id="nm_status" name="nm_status" placeholder="Nama Status" autocomplete="on" required/>
           </div>
-
+          
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <!-- <?php //if ($edit_state == false): ?> -->
+                	 <button type="submit" class="btn btn-primary" name="simpan" value="Simpan">Save Changes</button>
+                <!-- <?php //else: ?> -->
+                	 
+                <?php //endif ?>
+               
+              </div>
+          </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" name="simpan" value="Simpan">Save Changes</button>
-        </div>
-      </form>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div>
 <!-- 
 
 <?php 
