@@ -65,7 +65,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-                <h3 class="box-title">Add Status Barang</h3>
+                <h3 class="box-title">Add XX Status Barang</h3>
               </div>
           <form role="form" action="status_simpan.php" method="post" enctype="multipart/form-data">
               <div class="modal-body">
@@ -80,6 +80,7 @@
                   <input type="text" class="form-control" id="nm_status" name="nm_status" placeholder="Nama Status" autocomplete="on" />
                 	
                 </div>
+
 
               </div>
           
