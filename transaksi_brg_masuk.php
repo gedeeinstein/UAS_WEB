@@ -12,7 +12,15 @@
 <div class="content-wrapper">
     <section class="content">
      <div id="messages"></div>
-     <a href="brg_masuk.php"><button type="submit" name="tambah_data" class="btn btn-primary">Tambah Barang Masuk</button></a> - <a href="transaksi_brg_masuk_print.php"><button  class="btn btn-default">Print</button></a>
+    <a href="brg_masuk.php"><button type="submit" name="tambah_data" class="btn btn-primary">Tambah Barang Masuk</button></a> -  <!-- <a href="transaksi_brg_masuk_print.php"><button  class="btn btn-default">Print</button></a> -->
+
+     <button onclick="myFunction()">Print</button>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
 	 <br>
 	 <br>
         <div class="box">	 
